@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Batch Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .badge-toxic { background-color: #e74c3c; color: white; }
+        .badge-safe { background-color: #27ae60; color: white; }
+    </style>
+</head>
+<body class="bg-light p-5">
+    <div class="container bg-white p-5 rounded shadow-sm">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>📄 Hasil Analisis File</h2>
+            <a href="{{ url_for('ulang') }}" class="btn btn-outline-secondary">⬅️ Kembali</a>
+        </div>
+        
+        <p class="text-muted">Model: <strong>{{ model_name }}</strong></p>
+        
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width: 60%;">Teks</th>
+                        <th style="width: 20%;">Prediksi</th>
+                        <th style="width: 20%;">Confidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in results %}
+                    <tr>
+                        <td class="text-break">{{ row.original_text }}</td>
+                        <td>
+                            {% if row.label == 'Toxic' %}
+                                <span class="badge badge-toxic rounded-pill px-3">Toxic</span>
+                            {% else %}
+                                <span class="badge badge-safe rounded-pill px-3">Non-Toxic</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ row.score }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted py-4">Tidak ada data atau format file salah.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
