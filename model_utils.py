@@ -12,7 +12,6 @@ AVAILABLE_MODELS = {
     },
     "toxic_roberta": {
         "name": "Dzeisonov/indoroberta-toxic-classifier",
-        # FIX: Gunakan tokenizer dari base model aslinya karena yang di repo Dzeisonov rusak
         "tokenizer_name": "flax-community/indonesian-roberta-base", 
         "desc": "IndoRoBERTa (Fine-tuned)"
     },

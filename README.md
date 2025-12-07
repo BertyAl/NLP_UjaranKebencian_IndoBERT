@@ -23,3 +23,5 @@ Flask run
 ```
 
 Perintah ini akan menjalankan server Flask pada port default http://localhost:8000, dan Anda dapat mengakses endpoint API dari sana.
+
+Demo Aplikasi dapat dilakukan pada: https://huggingface.co/spaces/Dzeisonov/indo-toxicity-detector
